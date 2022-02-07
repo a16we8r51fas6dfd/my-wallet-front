@@ -15,7 +15,7 @@ function App() {
         <AuthProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route exact path='/sign-in' element={<SignIn />} />
+                    <Route exact path='/' element={<SignIn />} />
                     <Route exact path='/sign-up'element={<SignUp />} />
                     <Route exact path="/home" element={<Home />} />
                     <Route exact path='/home/nova-entrada' element={<NovaEntrada />} />
