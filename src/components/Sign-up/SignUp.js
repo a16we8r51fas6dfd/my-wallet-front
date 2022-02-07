@@ -27,8 +27,8 @@ export default function SignUp() {
 
         try {
             axios.post('http://localhost:5000/sign-up', userData)
-
-            navigate('/home')
+            
+            navigate('/sign-in')
         } catch (error) {
             console.log(error)
         }

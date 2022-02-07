@@ -1,33 +1,54 @@
-import { Link } from "react-router-dom"
-/* import axios from "axios" */
+import { Link, useNavigate} from "react-router-dom"
+import { useContext, useState } from "react"
+import { Context } from "../../context/authContext.js"
+import axios from "axios"
 import styled from 'styled-components'
-import { useState } from "react"
 import logo from '../../assets/logo.png'
 
 
 export default function SignIn() {
-    const [userData, setUserData] = useState({
+    const [loginData, setloginData] = useState({
         email:'',
         password:''
     })
+    const { setUserData, setToken, token } = useContext(Context)
+
+    const navigate = useNavigate()
+
+    async function handleSubmit(event) {
+        event.preventDefault()
+
+        try {
+            const post = await axios.post('http://localhost:5000/sign-in', loginData)
+            
+            setToken(post.data.token)
+            console.log(post.data)
+            setUserData({name: post.data.name})
+            console.log(token)
+
+            navigate('/home')
+        } catch (error) {
+            alert(error)
+        }
+    }
 
     return(
         <Container>
             <img src={logo} alt="my wallet" />
             <Form>
                 <input
-                    value={userData.email}
+                    value={loginData.email}
                     type="email"
                     placeholder="E-mail"
-                    onChange={(e) => setUserData({...userData, email:e.target.value})}
+                    onChange={(e) => setloginData({...loginData, email:e.target.value})}
                 />
                 <input
-                    value={userData.password}
+                    value={loginData.password}
                     type="password"
                     placeholder="Senha"
-                    onChange={(e) => setUserData({...userData, password:e.target.value})}
+                    onChange={(e) => setloginData({...loginData, password:e.target.value})}
                 />
-                <button type="submit">
+                <button onClick={handleSubmit} type="submit">
                     Entrar
                 </button>
             </Form>
