@@ -26,7 +26,7 @@ export default function SignUp() {
         delete userData.confirmPassword
 
         try {
-            axios.post('https://git.heroku.com/my-walet-back.git/sign-up', userData)
+            axios.post(`${process.env.REACT_APP_API}/sign-up`, userData)
             
             navigate('/')
         } catch (error) {

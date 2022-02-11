@@ -23,7 +23,7 @@ export default function Home() {
 
     useEffect(() => {
         try {
-            const promisse = axios.get('https://git.heroku.com/my-walet-back.git/home', {
+            const promisse = axios.get(`${process.env.REACT_APP_API}/home`, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }

@@ -24,7 +24,7 @@ export default function NovaEntrada() {
 
         console.log(token)
 
-        const promisse = axios.post('https://git.heroku.com/my-walet-back.git/new-entry', entry, {
+        const promisse = axios.post(`${process.env.REACT_APP_API}/new-entry`, entry, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
