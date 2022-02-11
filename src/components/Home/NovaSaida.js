@@ -24,7 +24,7 @@ export default function NovaSaida() {
 
         console.log(token)
 
-        const promisse = axios.post('http://localhost:5000/new-exit', exit, {
+        const promisse = axios.post('https://git.heroku.com/my-walet-back.git/new-exit', exit, {
                 headers: {
                     "Authorization": `Bearer ${token}`
                 }
