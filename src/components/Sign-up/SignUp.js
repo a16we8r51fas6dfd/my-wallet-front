@@ -28,7 +28,7 @@ export default function SignUp() {
         try {
             axios.post('https://git.heroku.com/my-walet-back.git/sign-up', userData)
             
-            navigate('/sign-in')
+            navigate('/')
         } catch (error) {
             console.log(error)
         }
